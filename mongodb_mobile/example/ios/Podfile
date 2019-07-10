@@ -1,5 +1,5 @@
 # Uncomment this line to define a global platform for your project
-source 'https://github.com/CocoaPods/Specs.git'
+# source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, '11.0'
 
 # CocoaPods analytics sends network stats synchronously affecting flutter build latency.
@@ -75,13 +75,3 @@ post_install do |installer|
     end
   end
 end
-# For core functionality and the Remote MongoDB Service
-pod 'StitchSDK', '= 6.0.1'
-# optional: for using the AWS service
-pod 'StitchSDK/StitchAWSService', '= 6.0.1'
-# optional: for using the Firebase Cloud Messaging service
-pod 'StitchSDK/StitchFCMService', '= 6.0.1'
-# optional: for using the HTTP service
-pod 'StitchSDK/StitchHTTPService', '= 6.0.1'
-# optional: for using the twilio service
-pod 'StitchSDK/StitchTwilioService', '= 6.0.1'
