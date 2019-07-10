@@ -39,7 +39,7 @@ import java.util.Objects;
 
 import static com.mongodb.client.model.Filters.eq;
 
-//   🧡 💛 💚 💙 💜
+//   🧡
 class RemoteDBUtil {
     private static StitchAppClient client;
     private static RemoteMongoClient remoteMongoClient;
@@ -48,7 +48,7 @@ class RemoteDBUtil {
 //
 
     static void anonymousAuth(String appID, final MongoAuthListener mongoAuthListener) throws Exception {
-        Log.d(TAG, "anonymousAuth: 🍎 🍎  starting ...!  \uD83E\uDDE1 \uD83D\uDC9B");
+        Log.d(TAG, "anonymousAuth:    starting ...!  \uD83E\uDDE1 \uD83D\uDC9B");
         try {
             Log.d(TAG, "anonymousAuth: \uD83D\uDD8D \uD83D\uDD8D \uD83D\uDD8D about to getAppClient ...");
             try {
@@ -64,10 +64,10 @@ class RemoteDBUtil {
             } else {
                 Log.d(TAG, "anonymousAuth: client already available: ".concat(client.toString()));
             }
-            Log.d(TAG, "anonymousAuth: 🍎 🍎  StitchAppClient in hand, Senor!  \uD83E\uDDE1 \uD83D\uDC9B");
+            Log.d(TAG, "anonymousAuth:    StitchAppClient in hand, Senor!  \uD83E\uDDE1 \uD83D\uDC9B");
             remoteMongoClient =
                     client.getServiceClient(RemoteMongoClient.factory, ATLAS);
-            Log.d(TAG, "onComplete: 🍎 🍎  RemoteMongoClient in hand, Senor!  \uD83E\uDDE1 \uD83D\uDC9B");
+            Log.d(TAG, "onComplete:    RemoteMongoClient in hand, Senor!  \uD83E\uDDE1 \uD83D\uDC9B");
 
         } catch (IllegalStateException w) {
             Log.d(TAG, "anonymousAuth: \uD83E\uDDE9\uD83E\uDDE9\uD83E\uDDE9 client already initialized.  \uD83D\uDC4E");
@@ -80,9 +80,9 @@ class RemoteDBUtil {
             @Override
             public void onComplete(Task<StitchUser> task) {
                 if (task.isSuccessful()) {
-                    Log.d(TAG, "Successfully logged in as user  🍎 🍎 : " + task.getResult().getId());
+                    Log.d(TAG, "Successfully logged in as user    : " + task.getResult().getId());
                     stitchUserProfile = task.getResult().getProfile();
-                    Log.d(TAG, "onComplete: 🍎 🍎 stitchUserProfile obtained, Boss!  \uD83D\uDC99 \uD83D\uDC9C");
+                    Log.d(TAG, "onComplete:   stitchUserProfile obtained, Boss!  \uD83D\uDC99 \uD83D\uDC9C");
                     Log.d(TAG, "onComplete: ".concat(Objects.requireNonNull(stitchUserProfile.toString())) );
                     mongoAuthListener.onAuth(stitchUserProfile);
 
@@ -97,7 +97,7 @@ class RemoteDBUtil {
     }
     static void authorize(String email, String password, final MongoAuthListener mongoAuthListener) {
         // Log-in using an Anonymous authentication provider from Stitch
-        Log.d(TAG, "\n\nauthorize: 🍎 🍎 ... connecting to Remote MongoDB Atlas .... \uD83E\uDDE9\uD83E\uDDE9\uD83E\uDDE9 ");
+        Log.d(TAG, "\n\nauthorize:   ... connecting to Remote MongoDB Atlas .... \uD83E\uDDE9\uD83E\uDDE9\uD83E\uDDE9 ");
 
         UserPasswordCredential credential = new UserPasswordCredential(email, password);
 
@@ -107,13 +107,13 @@ class RemoteDBUtil {
 
                         @Override public void onComplete(final Task<StitchUser> task) {
                             if (task.isSuccessful()) {
-                                Log.d(TAG, "Successfully logged in as user  🍎 🍎 : " + task.getResult().getId());
-                                Log.d(TAG, "onComplete: 🍎 🍎 auth OK, setting up RemoteMongoClient: mongodb-atlas");
+                                Log.d(TAG, "Successfully logged in as user    : " + task.getResult().getId());
+                                Log.d(TAG, "onComplete:   auth OK, setting up RemoteMongoClient: mongodb-atlas");
                                 remoteMongoClient =
                                         client.getServiceClient(RemoteMongoClient.factory, "mongodb-atlas");
-                                Log.d(TAG, "onComplete: 🍎 🍎  remoteMongoClient in hand, Senor!  \uD83E\uDDE1 \uD83D\uDC9B");
+                                Log.d(TAG, "onComplete:    remoteMongoClient in hand, Senor!  \uD83E\uDDE1 \uD83D\uDC9B");
                                 stitchUserProfile = task.getResult().getProfile();
-                                Log.d(TAG, "onComplete: 🍎 🍎 stitchUserProfile obtained, Boss!  \uD83D\uDC99 \uD83D\uDC9C");
+                                Log.d(TAG, "onComplete:   stitchUserProfile obtained, Boss!  \uD83D\uDC99 \uD83D\uDC9C");
                                 Log.d(TAG, "onComplete: ".concat(Objects.requireNonNull(stitchUserProfile.getName()))
                                         .concat(" ").concat(Objects.requireNonNull(stitchUserProfile.getEmail())));
                                 mongoAuthListener.onAuth(stitchUserProfile);
@@ -151,7 +151,7 @@ class RemoteDBUtil {
         }).addOnCompleteListener(new OnCompleteListener() {
             @Override
             public void onComplete( Task task) {
-                Log.d(TAG, "\uD83E\uDDE9 query: 🍎 🍎 🍎 🍎 documents found after query: "
+                Log.d(TAG, "\uD83E\uDDE9 query:     documents found after query: "
                         + list.size() + ", sending to listener ");
                 if (task.isSuccessful()) {
                     remoteQueryListener.onQuery(list);
@@ -164,7 +164,7 @@ class RemoteDBUtil {
     }
 
     static void update(Map carrier, final RemoteReplaceListener remoteReplaceListener) {
-        Log.d(TAG, "\uD83C\uDF3F ☘️ update: document: " + carrier.toString());
+        Log.d(TAG, "\uD83C\uDF3F ️ update: document: " + carrier.toString());
         Map idMap = (Map) carrier.get("id");
         assert idMap != null;
         String field = (String) idMap.get("field");
@@ -198,7 +198,7 @@ class RemoteDBUtil {
     }
 
     static void addToArray(Map carrier, final RemoteAddToArrayListener remoteInsertListener) {
-        Log.d(TAG, "\uD83C\uDF3F ☘️ addToArray:add to nested array element to document: " + carrier.toString());
+        Log.d(TAG, "\uD83C\uDF3F ️ addToArray:add to nested array element to document: " + carrier.toString());
         Map idMap = (Map) carrier.get("id");
         assert idMap != null;
         String field = (String) idMap.get("field");
@@ -242,7 +242,7 @@ class RemoteDBUtil {
             public void onComplete(final Task<RemoteInsertOneResult> task) {
                 if (task.isSuccessful()) {
                     String id = task.getResult().getInsertedId().asObjectId().getValue().toString();
-                    Log.d(TAG, "onComplete: \uD83C\uDF3F ☘ \uD83C\uDF3F ☘ ".concat("Document inserted, id: ")
+                    Log.d(TAG, "onComplete: \uD83C\uDF3F  \uD83C\uDF3F  ".concat("Document inserted, id: ")
                             .concat(id).concat("  \uD83E\uDDE1 \uD83D\uDC9B \uD83D\uDC9A \uD83D\uDC99 \uD83D\uDC9C "));
                     remoteInsertListener.onInsert(id);
                 } else {
@@ -255,7 +255,7 @@ class RemoteDBUtil {
     }
 
     static void getOne(Map carrier, final RemoteGetOneListener remoteGetOneListener) {
-        Log.d(TAG, "\uD83C\uDF3F ☘️ getOne: carrier: " + carrier.toString());
+        Log.d(TAG, "\uD83C\uDF3F ️ getOne: carrier: " + carrier.toString());
         Map idMap = (Map) carrier.get("id");
         assert idMap != null;
         String field = (String) idMap.get("field");
@@ -279,7 +279,7 @@ class RemoteDBUtil {
         }).addOnCompleteListener(new OnCompleteListener() {
             @Override
             public void onComplete( Task task) {
-                Log.d(TAG, "\uD83E\uDDE9 getOne: 🍎 🍎 🍎 🍎 documents found after iteration: "
+                Log.d(TAG, "\uD83E\uDDE9 getOne:     documents found after iteration: "
                         + list.size() + ", sending to listener ");
                 if (task.isSuccessful()) {
                     if (!list.isEmpty()) {
@@ -298,7 +298,7 @@ class RemoteDBUtil {
 
     static int cnt = 0;
     static void getAll(Map carrier, final RemoteGetAllListener remoteGetAllListener) {
-        Log.d(TAG, "\n🍎 getAll: get all documents in collection: " + carrier.toString() + "\n\n");
+        Log.d(TAG, "\n getAll: get all documents in collection: " + carrier.toString() + "\n\n");
 
         RemoteMongoCollection collection = getRemoteCollection(carrier);
         final List<Object> list = new ArrayList<>();
@@ -317,7 +317,7 @@ class RemoteDBUtil {
         }).addOnCompleteListener(new OnCompleteListener() {
             @Override
             public void onComplete( Task task) {
-                Log.d(TAG, "\uD83E\uDDE9 getAll: 🍎 🍎 🍎 🍎 documents found after iteration: "
+                Log.d(TAG, "\uD83E\uDDE9 getAll:     documents found after iteration: "
                         + list.size() + ", sending to listener ");
                 if (task.isSuccessful()) {
                     remoteGetAllListener.onGetAll(list);
@@ -354,7 +354,7 @@ class RemoteDBUtil {
         syncListener.onSyncCreated();
     }
     static void delete(Map carrier, final RemoteDeleteListener remoteDeleteListener) {
-        Log.d(TAG, "\uD83C\uDF3F  ✂️️ delete:  ✂️ document: " + carrier.toString());
+        Log.d(TAG, "\uD83C\uDF3F  ️️ delete:  ️ document: " + carrier.toString());
         Map idMap = (Map) carrier.get("id");
         assert idMap != null;
         String field = (String) idMap.get("field");

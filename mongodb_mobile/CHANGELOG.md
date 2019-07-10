@@ -12,16 +12,16 @@
 
 ## 0.0.4
 
-*  Added mobile to atlas sync 🍎 🍎 🍎
+*  Added mobile to atlas sync   
 
 ## 0.0.5
 
-*  💙   Fixed query filter bug    💙 
+*     Fixed query filter bug     
 
 ## 0.0.6
 
-*  💙   Added local query    💙 
+*     Added local query     
 
 ## 0.0.7
 
-*  💙   Refactored addToArray  and update functions    💙 
+*     Refactored addToArray  and update functions     

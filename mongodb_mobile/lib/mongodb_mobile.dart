@@ -22,7 +22,7 @@ class MongodbMobile {
   static Future<String> setAppID(dynamic config) async {
     var res = await _channel.invokeMethod('setAppID', config);
     debugPrint(
-        '🍎 MongodbMobile: 🍀  MongoDB Mobile should be connected, result: 🧩🧩🧩 $res');
+        ' MongodbMobile:   MongoDB Mobile should be connected, result: 🧩🧩🧩 $res');
     return '🧩🧩🧩 appID has been set';
   }
 

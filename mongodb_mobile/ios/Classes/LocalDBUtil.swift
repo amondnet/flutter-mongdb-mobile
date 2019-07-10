@@ -33,7 +33,7 @@ public class LocalDBUtil {
         let field = idMap["field"]
         let value = idMap["value"]
         
-        let filter = eq(field, value)
+        // let filter = eq(field, value)
     }
     
 

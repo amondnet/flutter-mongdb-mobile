@@ -28,7 +28,7 @@ class Helper {
     private static final String TAG = Helper.class.getSimpleName();
 
     static Bson getQueryFilter(Map carrier)  {
-        Log.d(TAG, "\uD83C\uDF3F ☘️ query: carrier: " + carrier.toString());
+        Log.d(TAG, "\uD83C\uDF3F ️ query: carrier: " + carrier.toString());
 
         Map query = (Map) carrier.get("query");
         assert query != null;
@@ -90,7 +90,7 @@ class Helper {
                 mFilter = or(filters);
             }
         }
-        Log.d(TAG, "❤️  ❤️   ❤️ query: mFilter:  ❤️  ❤️ " + mFilter);
+        Log.d(TAG, "️  ️   ️ query: mFilter:  ️  ️ " + mFilter);
         assert mFilter != null;
         return mFilter;
     }
