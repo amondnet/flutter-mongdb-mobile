@@ -11,14 +11,15 @@ public class ChangeEventStreamHandler: FlutterStreamHandler {
     }
     
     public func onCancel(withArguments arguments: Any?) -> FlutterError? {
-        NotificationCenter.default.removeObserver(self)
         eventSink = nil
         return nil
     }
     
     public func send (changeEvent: Any?) {
         if ( eventSink != nil ) {
-            //eventSink!.success(changeEvent)
+            eventSink!(changeEvent)
+        } else {
+            // _eventSink(FlutterError.init());
         }
     }
     
